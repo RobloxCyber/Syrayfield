@@ -49,46 +49,46 @@ local RayfieldLibrary = {
         Default = {
             TextColor = Color3.fromRGB(255, 255, 255), -- White text for contrast
 
-            -- Set the background to solid blue
-            Background = Color3.fromRGB(0, 0, 255), -- Solid blue background
+            -- Dark background (Synapse X blue-like)
+            Background = Color3.fromRGB(20, 20, 50), -- Very dark blue (midnight blue)
+            
+            -- Lighter blue UI elements to contrast the dark background
+            Topbar = Color3.fromRGB(0, 132, 255), -- Bright blue topbar
+            Shadow = Color3.fromRGB(90, 105, 170), -- Soft blue shadow
 
-            -- Keep the top bar blue
-            Topbar = Color3.fromRGB(2, 102, 191), -- Lighter blue topbar
-            Shadow = Color3.fromRGB(160, 180, 255), -- Soft blue shadow
+            NotificationBackground = Color3.fromRGB(70, 120, 200), -- Light blue notification background
+            NotificationActionsBackground = Color3.fromRGB(60, 110, 180), -- Soft notification actions background
 
-            NotificationBackground = Color3.fromRGB(170, 190, 255), -- Light blue notification background
-            NotificationActionsBackground = Color3.fromRGB(150, 170, 255), -- Soft notification actions background
-
-            TabBackground = Color3.fromRGB(180, 200, 255), -- Lighter tab background
-            TabStroke = Color3.fromRGB(160, 180, 255), -- Soft blue tab stroke
-            TabBackgroundSelected = Color3.fromRGB(120, 140, 255), -- Lighter selected tab background
+            TabBackground = Color3.fromRGB(50, 90, 180), -- Lighter tab background
+            TabStroke = Color3.fromRGB(40, 80, 160), -- Soft blue tab stroke
+            TabBackgroundSelected = Color3.fromRGB(40, 70, 150), -- Lighter selected tab background
             TabTextColor = Color3.fromRGB(255, 255, 255), -- White text on tabs
             SelectedTabTextColor = Color3.fromRGB(255, 255, 255), -- White text on selected tab
 
-            ElementBackground = Color3.fromRGB(160, 180, 255), -- Soft blue element background
-            ElementBackgroundHover = Color3.fromRGB(140, 160, 255), -- Lighter hover effect
-            SecondaryElementBackground = Color3.fromRGB(180, 200, 255), -- Secondary element background
-            ElementStroke = Color3.fromRGB(120, 140, 255), -- Soft blue stroke
-            SecondaryElementStroke = Color3.fromRGB(100, 120, 255), -- Secondary element stroke
+            ElementBackground = Color3.fromRGB(50, 90, 180), -- Soft blue element background
+            ElementBackgroundHover = Color3.fromRGB(40, 80, 160), -- Lighter hover effect
+            SecondaryElementBackground = Color3.fromRGB(60, 100, 190), -- Secondary element background
+            ElementStroke = Color3.fromRGB(40, 70, 150), -- Soft blue stroke
+            SecondaryElementStroke = Color3.fromRGB(30, 60, 130), -- Secondary element stroke
 
-            SliderBackground = Color3.fromRGB(50, 130, 255), -- Light blue slider background
-            SliderProgress = Color3.fromRGB(50, 130, 255), -- Light blue slider progress
-            SliderStroke = Color3.fromRGB(70, 150, 255), -- Soft blue slider stroke
+            SliderBackground = Color3.fromRGB(30, 70, 140), -- Light blue slider background
+            SliderProgress = Color3.fromRGB(30, 70, 140), -- Light blue slider progress
+            SliderStroke = Color3.fromRGB(50, 90, 170), -- Soft blue slider stroke
 
-            ToggleBackground = Color3.fromRGB(180, 200, 255), -- Light blue toggle background
+            ToggleBackground = Color3.fromRGB(50, 90, 180), -- Light blue toggle background
             ToggleEnabled = Color3.fromRGB(0, 146, 214), -- Bright blue toggle when enabled
-            ToggleDisabled = Color3.fromRGB(100, 120, 255), -- Lighter blue toggle when disabled
+            ToggleDisabled = Color3.fromRGB(40, 70, 140), -- Lighter blue toggle when disabled
             ToggleEnabledStroke = Color3.fromRGB(0, 130, 200), -- Darker stroke for enabled toggle
-            ToggleDisabledStroke = Color3.fromRGB(120, 140, 255), -- Light stroke for disabled toggle
-            ToggleEnabledOuterStroke = Color3.fromRGB(80, 100, 255), -- Outer stroke for enabled toggle
-            ToggleDisabledOuterStroke = Color3.fromRGB(60, 80, 255), -- Outer stroke for disabled toggle
+            ToggleDisabledStroke = Color3.fromRGB(40, 80, 160), -- Light stroke for disabled toggle
+            ToggleEnabledOuterStroke = Color3.fromRGB(20, 60, 130), -- Outer stroke for enabled toggle
+            ToggleDisabledOuterStroke = Color3.fromRGB(10, 50, 120), -- Outer stroke for disabled toggle
 
-            DropdownSelected = Color3.fromRGB(140, 160, 255), -- Light blue dropdown selected
-            DropdownUnselected = Color3.fromRGB(180, 200, 255), -- Lighter unselected dropdown
+            DropdownSelected = Color3.fromRGB(50, 90, 180), -- Light blue dropdown selected
+            DropdownUnselected = Color3.fromRGB(70, 120, 200), -- Lighter unselected dropdown
 
-            InputBackground = Color3.fromRGB(180, 200, 255), -- Light blue input background
-            InputStroke = Color3.fromRGB(120, 140, 255), -- Soft blue input stroke
-            PlaceholderColor = Color3.fromRGB(120, 140, 255) -- Light blue placeholder text
+            InputBackground = Color3.fromRGB(50, 90, 180), -- Light blue input background
+            InputStroke = Color3.fromRGB(40, 80, 160), -- Soft blue input stroke
+            PlaceholderColor = Color3.fromRGB(50, 90, 180) -- Light blue placeholder text
         },
 		Ocean = {
 			TextColor = Color3.fromRGB(230, 240, 240),
