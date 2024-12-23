@@ -9,8 +9,6 @@ Max   | Programming
 
 ]]
 
-
-
 local InterfaceBuild = '1VEX'
 local Release = "Build 1.55"
 local RayfieldFolder = "Rayfield"
@@ -46,12 +44,15 @@ if request then
 end
 
 local RayfieldLibrary = {
-	Flags = {},
-	Theme = {
-		Default = {
+    Flags = {},
+    Theme = {
+        Default = {
             TextColor = Color3.fromRGB(255, 255, 255), -- White text for contrast
 
-            Background = Color3.fromRGB(76, 76, 255), -- Light blue background
+            -- Set the background to solid blue
+            Background = Color3.fromRGB(0, 0, 255), -- Solid blue background
+
+            -- Keep the top bar blue
             Topbar = Color3.fromRGB(2, 102, 191), -- Lighter blue topbar
             Shadow = Color3.fromRGB(160, 180, 255), -- Soft blue shadow
 
@@ -88,8 +89,7 @@ local RayfieldLibrary = {
             InputBackground = Color3.fromRGB(180, 200, 255), -- Light blue input background
             InputStroke = Color3.fromRGB(120, 140, 255), -- Soft blue input stroke
             PlaceholderColor = Color3.fromRGB(120, 140, 255) -- Light blue placeholder text
-		},
-
+        },
 		Ocean = {
 			TextColor = Color3.fromRGB(230, 240, 240),
 
