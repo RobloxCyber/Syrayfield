@@ -51,8 +51,8 @@ local RayfieldLibrary = {
 		Default = {
             TextColor = Color3.fromRGB(255, 255, 255), -- White text for contrast
 
-            Background = Color3.fromRGB(200, 220, 255), -- Light blue background
-            Topbar = Color3.fromRGB(180, 200, 255), -- Lighter blue topbar
+            Background = Color3.fromRGB(76, 76, 255), -- Light blue background
+            Topbar = Color3.fromRGB(2, 102, 191), -- Lighter blue topbar
             Shadow = Color3.fromRGB(160, 180, 255), -- Soft blue shadow
 
             NotificationBackground = Color3.fromRGB(170, 190, 255), -- Light blue notification background
