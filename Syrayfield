@@ -1674,52 +1674,66 @@ function RayfieldLibrary:CreateWindow(Settings)
 
 
 		-- Animate
-		task.wait(0.1)
-		if FirstTab then
-			TabButton.BackgroundColor3 = SelectedTheme.TabBackground
-			TabButton.Image.ImageColor3 = SelectedTheme.TabTextColor
-			TabButton.Title.TextColor3 = SelectedTheme.TabTextColor
-			TweenService:Create(TabButton, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.7}):Play()
-			TweenService:Create(TabButton.Title, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {TextTransparency = 0.2}):Play()
-			TweenService:Create(TabButton.Image, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.2}):Play()
-			TweenService:Create(TabButton.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 0.5}):Play()
-		else
-			FirstTab = Name
-			TabButton.BackgroundColor3 = SelectedTheme.TabBackgroundSelected
-			TabButton.Image.ImageColor3 = SelectedTheme.SelectedTabTextColor
-			TabButton.Title.TextColor3 = SelectedTheme.SelectedTabTextColor
-			TweenService:Create(TabButton.Image, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0}):Play()
-			TweenService:Create(TabButton, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
-			TweenService:Create(TabButton.Title, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
+	task.wait(0.1)
+	if FirstTab then
+		TabButton.BackgroundColor3 = SelectedTheme.TabBackground
+		TabButton.Image.ImageColor3 = SelectedTheme.TabTextColor
+		TabButton.Title.TextColor3 = SelectedTheme.TabTextColor
+
+		-- Using a more complex easing style for smoother transitions
+		TweenService:Create(TabButton, TweenInfo.new(0.6, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundTransparency = 0.7}):Play()
+		TweenService:Create(TabButton.Title, TweenInfo.new(0.6, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {TextTransparency = 0.2}):Play()
+		TweenService:Create(TabButton.Image, TweenInfo.new(0.6, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {ImageTransparency = 0.2}):Play()
+		TweenService:Create(TabButton.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Transparency = 0.5}):Play()
+
+		-- Adding a subtle scale effect for emphasis
+		TweenService:Create(TabButton, TweenInfo.new(0.6, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Size = UDim2.new(1, 0, 1, 0)}):Play()
+	else
+		FirstTab = Name
+		TabButton.BackgroundColor3 = SelectedTheme.TabBackgroundSelected
+		TabButton.Image.ImageColor3 = SelectedTheme.SelectedTabTextColor
+		TabButton.Title.TextColor3 = SelectedTheme.SelectedTabTextColor
+
+		-- Enhancing the tab selection with a pop effect
+		TweenService:Create(TabButton.Image, TweenInfo.new(0.6, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {ImageTransparency = 0}):Play()
+		TweenService:Create(TabButton, TweenInfo.new(0.6, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundTransparency = 0}):Play()
+		TweenService:Create(TabButton.Title, TweenInfo.new(0.6, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {TextTransparency = 0}):Play()
+
+		-- Adding a pop-up effect for when the tab is selected
+		TweenService:Create(TabButton, TweenInfo.new(0.6, Enum.EasingStyle.Bounce, Enum.EasingDirection.Out), {Size = UDim2.new(1.1, 0, 1.1, 0)}):Play()
+	end
+
+	TabButton.Interact.MouseButton1Click:Connect(function()
+		if Minimised then return end
+
+		-- Smooth selection animation with a bounce effect
+		TweenService:Create(TabButton, TweenInfo.new(0.6, Enum.EasingStyle.Bounce, Enum.EasingDirection.Out), {BackgroundTransparency = 0}):Play()
+		TweenService:Create(TabButton.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Bounce, Enum.EasingDirection.Out), {Transparency = 1}):Play()
+		TweenService:Create(TabButton.Title, TweenInfo.new(0.6, Enum.EasingStyle.Bounce, Enum.EasingDirection.Out), {TextTransparency = 0}):Play()
+		TweenService:Create(TabButton.Image, TweenInfo.new(0.6, Enum.EasingStyle.Bounce, Enum.EasingDirection.Out), {ImageTransparency = 0}):Play()
+		TweenService:Create(TabButton, TweenInfo.new(0.6, Enum.EasingStyle.Bounce, Enum.EasingDirection.Out), {BackgroundColor3 = SelectedTheme.TabBackgroundSelected}):Play()
+		TweenService:Create(TabButton.Title, TweenInfo.new(0.6, Enum.EasingStyle.Bounce, Enum.EasingDirection.Out), {TextColor3 = SelectedTheme.SelectedTabTextColor}):Play()
+		TweenService:Create(TabButton.Image, TweenInfo.new(0.6, Enum.EasingStyle.Bounce, Enum.EasingDirection.Out), {ImageColor3 = SelectedTheme.SelectedTabTextColor}):Play()
+
+		-- Animate all other tabs smoothly back to the default state
+		for _, OtherTabButton in ipairs(TabList:GetChildren()) do
+			if OtherTabButton.Name ~= "Template" and OtherTabButton.ClassName == "Frame" and OtherTabButton ~= TabButton and OtherTabButton.Name ~= "Placeholder" then
+				TweenService:Create(OtherTabButton, TweenInfo.new(0.6, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = SelectedTheme.TabBackground}):Play()
+				TweenService:Create(OtherTabButton.Title, TweenInfo.new(0.6, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {TextColor3 = SelectedTheme.TabTextColor}):Play()
+				TweenService:Create(OtherTabButton.Image, TweenInfo.new(0.6, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {ImageColor3 = SelectedTheme.TabTextColor}):Play()
+				TweenService:Create(OtherTabButton, TweenInfo.new(0.6, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundTransparency = 0.7}):Play()
+				TweenService:Create(OtherTabButton.Title, TweenInfo.new(0.6, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {TextTransparency = 0.2}):Play()
+				TweenService:Create(OtherTabButton.Image, TweenInfo.new(0.6, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {ImageTransparency = 0.2}):Play()
+				TweenService:Create(OtherTabButton.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Transparency = 0.5}):Play()
+			end
 		end
 
+		-- Ensure the page change is smooth when jumping to the new tab
+		if Elements.UIPageLayout.CurrentPage ~= TabPage then
+			Elements.UIPageLayout:JumpTo(TabPage)
+		end
+	end)
 
-		TabButton.Interact.MouseButton1Click:Connect(function()
-			if Minimised then return end
-			TweenService:Create(TabButton, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
-			TweenService:Create(TabButton.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
-			TweenService:Create(TabButton.Title, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
-			TweenService:Create(TabButton.Image, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0}):Play()
-			TweenService:Create(TabButton, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.TabBackgroundSelected}):Play()
-			TweenService:Create(TabButton.Title, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {TextColor3 = SelectedTheme.SelectedTabTextColor}):Play()
-			TweenService:Create(TabButton.Image, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageColor3 = SelectedTheme.SelectedTabTextColor}):Play()
-
-			for _, OtherTabButton in ipairs(TabList:GetChildren()) do
-				if OtherTabButton.Name ~= "Template" and OtherTabButton.ClassName == "Frame" and OtherTabButton ~= TabButton and OtherTabButton.Name ~= "Placeholder" then
-					TweenService:Create(OtherTabButton, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.TabBackground}):Play()
-					TweenService:Create(OtherTabButton.Title, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {TextColor3 = SelectedTheme.TabTextColor}):Play()
-					TweenService:Create(OtherTabButton.Image, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageColor3 = SelectedTheme.TabTextColor}):Play()
-					TweenService:Create(OtherTabButton, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.7}):Play()
-					TweenService:Create(OtherTabButton.Title, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {TextTransparency = 0.2}):Play()
-					TweenService:Create(OtherTabButton.Image, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.2}):Play()
-					TweenService:Create(OtherTabButton.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 0.5}):Play()
-				end
-			end
-			if Elements.UIPageLayout.CurrentPage ~= TabPage then
-				Elements.UIPageLayout:JumpTo(TabPage)
-			end
-
-		end)
 
 		local Tab = {}
 
