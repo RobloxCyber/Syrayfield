@@ -870,38 +870,18 @@ function RayfieldLibrary:Notify(data) -- action e.g open messages
 	end)
 end
 
-local function openSearch()
-	searchOpen = true
+function Library:open()
+	self.Container.Visible = true
+	self.Shadow.Visible = true
+	self.Mobile.Modal = true
 
-	Main.Search.BackgroundTransparency = 1
-	Main.Search.Shadow.ImageTransparency = 1
-	Main.Search.Input.TextTransparency = 1
-	Main.Search.Search.ImageTransparency = 1
-	Main.Search.UIStroke.Transparency = 1
-	Main.Search.Size = UDim2.new(1, 0, 0, 80)
-	Main.Search.Position = UDim2.new(0.5, 0, 0, 70)
+	TweenService:Create(self.Container, TweenInfo.new(0.6, Enum.EasingStyle.Circular, Enum.EasingDirection.InOut), {
+		Size = UDim2.new(0, 699, 0, 426)
+	}):Play()
 
-	Main.Search.Input.Interactable = true
-
-	Main.Search.Visible = true
-
-	for _, tabbtn in ipairs(TabList:GetChildren()) do
-		if tabbtn.ClassName == "Frame" and tabbtn.Name ~= "Placeholder" then
-			tabbtn.Interact.Visible = false
-			TweenService:Create(tabbtn, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {BackgroundTransparency = 1}):Play()
-			TweenService:Create(tabbtn.Title, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
-			TweenService:Create(tabbtn.Image, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
-			TweenService:Create(tabbtn.UIStroke, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
-		end
-	end
-
-	Main.Search.Input:CaptureFocus()
-	TweenService:Create(Main.Search.Shadow, TweenInfo.new(0.05, Enum.EasingStyle.Quint), {ImageTransparency = 0.95}):Play()
-	TweenService:Create(Main.Search, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {Position = UDim2.new(0.5, 0, 0, 57), BackgroundTransparency = 0.9}):Play()
-	TweenService:Create(Main.Search.UIStroke, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {Transparency = 0.8}):Play()
-	TweenService:Create(Main.Search.Input, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {TextTransparency = 0.2}):Play()
-	TweenService:Create(Main.Search.Search, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {ImageTransparency = 0.5}):Play()
-	TweenService:Create(Main.Search, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {Size = UDim2.new(1, -35, 0, 35)}):Play()
+	TweenService:Create(self.Shadow, TweenInfo.new(0.6, Enum.EasingStyle.Circular, Enum.EasingDirection.InOut), {
+		Size = UDim2.new(0, 776, 0, 509)
+	}):Play()
 end
 
 function Library:close()
@@ -924,6 +904,7 @@ function Library:close()
 		self.Mobile.Modal = false
 	end)
 end
+
 local function Hide(notify: boolean?)
 	if MPrompt then
 		MPrompt.Title.TextColor3 = Color3.fromRGB(255, 255, 255)
